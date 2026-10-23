@@ -1,27 +1,48 @@
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fancy Form</title>
-
-  <!-- You may add more stuff here -->
-  <link href="style.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orbit — Currency swap</title>
+  <link href="./style.css" rel="stylesheet" />
 </head>
-
 <body>
-
-  <!-- You may reorganise the whole HTML, as long as your form achieves the same effect. -->
-  <form onsubmit="return !1">
-    <h5>Swap</h5>
-    <label for="input-amount">Amount to send</label>
-    <input id="input-amount" />
-
-    <label for="output-amount">Amount to receive</label>
-    <input id="output-amount" />
-
-    <button>CONFIRM SWAP</button>
-  </form>
-  <script src="script.js"></script>
+  <header><a class="brand" href="./"><span aria-hidden="true">◈</span> orbit.</a><span class="badge">● Demo workspace</span></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">LESS FRICTION. MORE POSSIBILITY.</p>
+      <h1 id="page-title">A little swap.<br />A new direction.</h1>
+      <p>Explore your next move with a simple currency swap.<br />Clear rates. A little more clarity.</p>
+      <p class="note">↗ &nbsp; Your assets, a fresh perspective.</p>
+    </section>
+    <section class="card" aria-labelledby="swap-heading">
+      <div class="heading"><h2 id="swap-heading">Swap currencies</h2><span class="pill">Preview mode</span></div>
+      <p class="subtitle">Make your next move.</p>
+      <form id="swap-form" novalidate>
+        <fieldset id="swap-fields">
+          <legend class="sr-only">Choose your swap</legend>
+          <div class="asset-panel">
+            <div class="panel-label"><label for="input-amount">You send</label><button id="max-button" type="button">Use max</button></div>
+            <div class="inputs"><input id="input-amount" type="text" inputmode="decimal" value="1" autocomplete="off" aria-describedby="balance amount-error" /><label class="sr-only" for="from-token">Send currency</label><select id="from-token"></select></div>
+            <div class="panel-foot"><span id="send-value"></span><span id="balance"></span></div>
+          </div>
+          <div class="direction"><button id="reverse-button" type="button" aria-label="Reverse currencies">↓↑</button></div>
+          <div class="asset-panel receive">
+            <div class="panel-label"><label for="output-amount">You receive (estimated)</label></div>
+            <div class="inputs"><input id="output-amount" readonly tabindex="-1" /><label class="sr-only" for="to-token">Receive currency</label><select id="to-token"></select></div>
+            <div class="panel-foot"><span id="receive-value"></span><span>After demo fee</span></div>
+          </div>
+          <p id="amount-error" class="error" aria-live="polite"></p>
+          <div class="details"><div><span>Exchange rate</span><strong id="rate"></strong></div><div><span>Demo service fee · 0.3%</span><strong id="fee"></strong></div><div><span>Network</span><strong>Simulation only</strong></div></div>
+          <button id="submit-button" class="primary" type="submit">Preview swap ↗</button>
+        </fieldset>
+        <p id="swap-status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="disclaimer">◇ Sample prices & balances. No wallet or real funds.</p>
+      <noscript><p class="error">Enable JavaScript to use this demo.</p></noscript>
+    </section>
+  </main>
+  <footer><span>BUILT FOR YOUR NEXT MOVE</span><span>Illustrative rates · No live market data</span></footer>
+  <script type="module" src="./script.js"></script>
 </body>
-
 </html>
